@@ -29,4 +29,17 @@
       <Folder Include="wwwroot\" />
     </ItemGroup>
 
+    <Target Name="CheckForNpm" BeforeTargets="BuildCSS">
+        <Exec Command="npm -v" ContinueOnError="true">
+            <Output TaskParameter="ExitCode" PropertyName="ErrorCode"/>
+        </Exec>
+        <Error Condition="'$(ErrorCode)' != '0'" Text="You must install NPM"/>
+    </Target>
+
+    <Target Name="BuildCSS" BeforeTargets="Compile">
+        <Exec EnvironmentVariables="NODE_ENV=production"
+              Condition="'$(Configuration)' == 'Release'"
+              Command="npm run build"/>
+    </Target>
+
 </Project>
