@@ -21,6 +21,16 @@ builder.Services.AddAuthentication(options =>
         options.DefaultScheme = IdentityConstants.ApplicationScheme;
         options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
     })
+    .AddDiscord(x =>
+    {
+        x.ClientId = "xyz";
+        x.ClientSecret = "dssd";
+    })
+    .AddGitHub(x =>
+    {
+        x.ClientId = "xyz";
+        x.ClientSecret = "xyz";
+    })
     .AddIdentityCookies();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
