@@ -1,0 +1,24 @@
+﻿<div class="flex flex-col justify-center items-center py-4 lg:py-16 px-4 min-h-screen w-screen">
+    <div class="container max-w-[500px] mx-auto flex flex-col justify-center">
+        <div class="mb-12">
+            <h1 class="uppercase text-4xl font-black mb-4 text-center">@Title</h1>
+
+            <div class="text-center font-thin">@Subtitle</div>
+        </div>
+
+        <div class="flex flex-col gap-12 rounded-2xl shadow-2xl from-white/10 to-gray-900/30 bg-gradient-to-br backdrop-blur-xl border border-neutral-700 px-8 py-8 lg:px-12 lg:py-10">
+            @ChildContent
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public string? Title { get; set; }
+
+    [Parameter]
+    public RenderFragment? Subtitle { get; set; }
+}
