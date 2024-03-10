@@ -21,41 +21,32 @@
     <Subtitle>Already a member? <a href="@(NavigationManager.GetUriWithQueryParameters("Account/Login", new Dictionary<string, object?> { ["ReturnUrl"] = ReturnUrl }))" class="link font-semibold">Log in</a></Subtitle>
 
     <ChildContent>
-        <ExternalLoginPicker/>
+        <div class="flex flex-col gap-12">
+            <ExternalLoginPicker/>
+            <section>
+                <StatusMessage Message="@Message"/>
+                <EditForm Model="Input" asp-route-returnUrl="@ReturnUrl" method="post" OnValidSubmit="RegisterUser" FormName="register">
+                    <DataAnnotationsValidator/>
+                    <h2 class="uppercase text-xl font-black mb-6">Create a new account</h2>
 
-        <section>
-            <StatusMessage Message="@Message"/>
-            <EditForm Model="Input" asp-route-returnUrl="@ReturnUrl" method="post" OnValidSubmit="RegisterUser" FormName="register">
-                <DataAnnotationsValidator/>
-                <h2 class="uppercase text-xl font-black mb-6">Create a new account</h2>
+                    <ValidationSummary class="flex flex-col gap-1 text-red-400 mb-4 border-l-4 border-red-700 pl-4 py-2" role="alert"/>
 
-                <div class="mb-8">
+                    <InputWrapper For="email" Label="Email" ValidationProperty="() => Input.Email">
+                        <InputText id="email" @bind-Value="Input.Email" class="form-input" autocomplete="username" aria-required="true" placeholder="name@example.com"/>
+                    </InputWrapper>
 
-                </div>
+                    <InputWrapper For="password" Label="Password" ValidationProperty="() => Input.Password">
+                        <InputText type="password" @bind-Value="Input.Password" id="password" class="form-input" autocomplete="current-password" aria-required="true" placeholder="password"/>
+                    </InputWrapper>
 
-                <ValidationSummary class="flex flex-col gap-1 text-red-400 mb-4 border-l-4 border-red-700 pl-4 py-2" role="alert"/>
+                    <InputWrapper For="confirm-password" Label="Confirm Password" ValidationProperty="() => Input.ConfirmPassword">
+                        <InputText type="password" @bind-Value="Input.ConfirmPassword" id="confirm-password" class="form-input" autocomplete="current-password" aria-required="true" placeholder="password"/>
+                    </InputWrapper>
 
-                <div class="flex flex-col mb-6 gap-2">
-                    <label for="email" class="font-bold">Email</label>
-                    <InputText @bind-Value="Input.Email" class="form-input" id="email" autocomplete="username" aria-required="true" placeholder="name@example.com"/>
-                    <ValidationMessage For="() => Input.Email" class="text-red-400 font-semibold"/>
-                </div>
-
-                <div class="flex flex-col mb-6 gap-2">
-                    <label for="password" class="font-bold">Password</label>
-                    <InputText type="password" @bind-Value="Input.Password" id="password" class="form-input" autocomplete="current-password" aria-required="true" placeholder="password"/>
-                    <ValidationMessage For="() => Input.Password" class="text-red-400 font-semibold"/>
-                </div>
-
-                <div class="flex flex-col mb-6 gap-2">
-                    <label for="confirm-password" class="font-bold">Confirm Password</label>
-                    <InputText type="password" @bind-Value="Input.ConfirmPassword" id="confirm-password" class="form-input" autocomplete="current-password" aria-required="true" placeholder="password"/>
-                    <ValidationMessage For="() => Input.ConfirmPassword" class="text-red-400 font-semibold"/>
-                </div>
-
-                <button type="submit" class="block transition-all ease-in-out duration-300 w-full px-4 py-2 text-center rounded-lg bg-purple-900 hover:bg-purple-950 shadow-2xl">Register</button>
-            </EditForm>
-        </section>
+                    <AppButton Label="Register" />
+                </EditForm>
+            </section>
+        </div>
     </ChildContent>
 </AuthenticationWrapper>
 

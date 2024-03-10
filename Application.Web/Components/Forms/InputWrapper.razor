@@ -1,0 +1,22 @@
+﻿@using System.Linq.Expressions
+@typeparam TValue
+
+<div class="flex flex-col mb-6 gap-2">
+    <label for="@For" class="font-bold">@Label</label>
+    @ChildContent
+    <ValidationMessage For="@ValidationProperty" class="text-red-400 font-semibold"/>
+</div>
+
+@code {
+    [Parameter]
+    public string? For { get; set; }
+
+    [Parameter]
+    public string? Label { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public Expression<Func<TValue>>? ValidationProperty { get; set; }
+}

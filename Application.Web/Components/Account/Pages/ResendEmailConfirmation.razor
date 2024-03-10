@@ -14,24 +14,29 @@
 
 <PageTitle>Resend email confirmation</PageTitle>
 
-<h1>Resend email confirmation</h1>
-<h2>Enter your email.</h2>
-<hr/>
-<StatusMessage Message="@message"/>
-<div class="row">
-    <div class="col-md-4">
-        <EditForm Model="Input" FormName="resend-email-confirmation" OnValidSubmit="OnValidSubmitAsync" method="post">
-            <DataAnnotationsValidator/>
-            <ValidationSummary class="text-danger" role="alert"/>
-            <div class="form-floating mb-3">
-                <InputText @bind-Value="Input.Email" class="form-control" aria-required="true" placeholder="name@example.com"/>
-                <label for="email" class="form-label">Email</label>
-                <ValidationMessage For="() => Input.Email" class="text-danger"/>
+<AuthenticationWrapper Title="Resend confirmation">
+    <Subtitle>Email confirmed? <a href="/Account/Login/" class="link font-semibold">Log in</a></Subtitle>
+
+    <ChildContent>
+        <StatusMessage Message="@message"/>
+
+        <div class="row">
+            <div class="col-md-4">
+                <EditForm Model="Input" FormName="resend-email-confirmation" OnValidSubmit="OnValidSubmitAsync" method="post">
+                    <DataAnnotationsValidator/>
+                    <ValidationSummary class="text-danger" role="alert"/>
+
+                    <InputWrapper For="email" Label="Email" ValidationProperty="() => Input.Email">
+                        <InputText id="email" @bind-Value="Input.Email" class="form-input" autocomplete="username" aria-required="true" placeholder="name@example.com"/>
+                    </InputWrapper>
+
+                    <AppButton Label="Resend confirmation" />
+                </EditForm>
             </div>
-            <button type="submit" class="w-100 btn btn-lg btn-primary">Resend</button>
-        </EditForm>
-    </div>
-</div>
+        </div>
+    </ChildContent>
+</AuthenticationWrapper>
+
 
 @code {
     private string? message;

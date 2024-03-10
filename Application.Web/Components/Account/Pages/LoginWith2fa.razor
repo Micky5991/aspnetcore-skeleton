@@ -22,19 +22,20 @@
             <input type="hidden" name="RememberMe" value="@RememberMe"/>
             <DataAnnotationsValidator/>
             <ValidationSummary class="text-danger" role="alert"/>
-            <div class="form-floating mb-3">
-                <InputText @bind-Value="Input.TwoFactorCode" class="form-control" autocomplete="off"/>
-                <label for="two-factor-code" class="form-label">Authenticator code</label>
-                <ValidationMessage For="() => Input.TwoFactorCode" class="text-danger"/>
-            </div>
+
+            <InputWrapper For="two-factor-code" Label="Password" ValidationProperty="() => Input.TwoFactorCode">
+                <InputText id="two-factor-code" @bind-Value="Input.TwoFactorCode" class="form-input" autocomplete="off"/>
+            </InputWrapper>
+
             <div class="checkbox mb-3">
                 <label for="remember-machine" class="form-label">
                     <InputCheckbox @bind-Value="Input.RememberMachine"/>
                     Remember this machine
                 </label>
             </div>
+
             <div>
-                <button type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                <AppButton Label="Log in" />
             </div>
         </EditForm>
     </div>
