@@ -11,9 +11,12 @@
 
 <PageTitle>Confirm email change</PageTitle>
 
-<h1>Confirm email change</h1>
 
-<StatusMessage Message="@message"/>
+<AuthenticationWrapper Title="Confirm email change">
+    <ChildContent>
+        <StatusMessage Message="@message"/>
+    </ChildContent>
+</AuthenticationWrapper>
 
 @code {
     private string? message;

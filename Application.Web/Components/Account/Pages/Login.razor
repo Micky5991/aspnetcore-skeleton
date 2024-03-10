@@ -13,7 +13,7 @@
 <PageTitle>Log in</PageTitle>
 
 <AuthenticationWrapper Title="Log in">
-    <Subtitle>Not a member? <a href="@(NavigationManager.GetUriWithQueryParameters("Account/Register", new Dictionary<string, object?> { ["ReturnUrl"] = ReturnUrl }))" class="font-semibold">Create account</a></Subtitle>
+    <Subtitle>Not a member? <a href="@(NavigationManager.GetUriWithQueryParameters("Account/Register", new Dictionary<string, object?> { ["ReturnUrl"] = ReturnUrl }))" class="link font-semibold">Create account</a></Subtitle>
 
     <ChildContent>
         <ExternalLoginPicker/>

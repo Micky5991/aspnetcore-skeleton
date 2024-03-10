@@ -18,7 +18,7 @@
 <PageTitle>Register</PageTitle>
 
 <AuthenticationWrapper Title="Register">
-    <Subtitle>Already a member? <a href="@(NavigationManager.GetUriWithQueryParameters("Account/Login", new Dictionary<string, object?> { ["ReturnUrl"] = ReturnUrl }))" class="font-semibold">Log in</a></Subtitle>
+    <Subtitle>Already a member? <a href="@(NavigationManager.GetUriWithQueryParameters("Account/Login", new Dictionary<string, object?> { ["ReturnUrl"] = ReturnUrl }))" class="link font-semibold">Log in</a></Subtitle>
 
     <ChildContent>
         <ExternalLoginPicker/>

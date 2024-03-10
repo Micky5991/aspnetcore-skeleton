@@ -1,4 +1,4 @@
-﻿@page "/Account/ConfirmEmail"
+﻿@page "/Account/ConfirmEmail/"
 
 @using System.Text
 @using Microsoft.AspNetCore.Identity
@@ -10,8 +10,11 @@
 
 <PageTitle>Confirm email</PageTitle>
 
-<h1>Confirm email</h1>
-<StatusMessage Message="@statusMessage"/>
+<AuthenticationWrapper Title="Confirm email">
+    <ChildContent>
+        <StatusMessage Message="@statusMessage"/>
+    </ChildContent>
+</AuthenticationWrapper>
 
 @code {
     private string? statusMessage;
