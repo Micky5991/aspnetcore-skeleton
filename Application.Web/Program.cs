@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Application.Web.Components;
 using Application.Web.Components.Account;
 using Application.Web.Data;
+using Application.Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -61,6 +62,8 @@ else
 }
 
 app.UseHttpsRedirection();
+
+app.Redirect("/Account/", "/Account/Login/");
 
 app.UseStaticFiles();
 app.UseAntiforgery();
