@@ -1,0 +1,52 @@
+﻿@inherits LayoutComponentBase
+
+<div class="sticky top-0 z-20">
+    <div class="bg-slate-950/50 backdrop-blur border-b border-neutral-900 py-5">
+        <div class="container mx-auto flex flex-row justify-between items-center">
+            <div class="flex flex-row items-center gap-12 leading-none">
+                <a href="/" class="font-bold text-xl">Application</a>
+            </div>
+
+            <div class="flex flex-row text-gray-200">
+                <div><NavLink class="px-4 py-2" href="" ActiveClass="text-primary-500" Match="NavLinkMatch.All">Home</NavLink></div>
+                <div><NavLink class="px-4 py-2" href="example" ActiveClass="text-primary-500">Example Pages</NavLink></div>
+            </div>
+            <div>
+                <AuthorizeView>
+                    <NotAuthorized>
+                        <div class="flex flex-row gap-4">
+                            <a href="Account/Login" class="block rounded-full bg-gray-400/10 hover:bg-gray-400/20 transition-default px-6 py-2 border border-gray-300/20 font-semibold text-gray-300">Log in</a>
+                            <a href="Account/Register" class="block rounded-full bg-gray-400/30 hover:bg-gray-400/40 transition-default px-6 py-2 border border-gray-300/30 font-semibold text-gray-200">Sign Up</a>
+                        </div>
+                    </NotAuthorized>
+                    <Authorized>
+                        <div class="flex flex-row shrink-0 grow-0 items-center">
+                            <div>
+                                <a href="Account/Manage" class="block rounded-full bg-gray-400/10 hover:bg-gray-400/20 transition-default pl-6 pr-4 py-2 border border-r-0 rounded-r-none border-gray-300/20 font-semibold text-gray-300" title="Manage account">Micky5991</a>
+                            </div>
+                            <div>
+                                <a href="Account/Manage" class="block rounded-full bg-gray-400/10 hover:bg-gray-400/20 transition-default px-3 py-2 border border-l-0 rounded-l-none border-gray-300/20 font-semibold text-gray-300 hover:text-primary-500" title="Log out">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-current" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"/>
+                                        <path d="M9 12h12l-3 -3"/>
+                                        <path d="M18 15l3 -3"/>
+                                    </svg>
+                                </a>
+                            </div>
+
+                        </div>
+                    </Authorized>
+                </AuthorizeView>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="h-[5000px]">
+    @Body
+</div>
+
+@code
+{
+
+}
