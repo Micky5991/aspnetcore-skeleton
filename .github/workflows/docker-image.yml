@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+
     - name: Build the Docker image
-      run: docker build ./Application.Web/ --file Dockerfile --tag micky5991-aspnetcore-skeleton:$(date +%s)
+      run: docker build ./Application.Web/ --tag micky5991-aspnetcore-skeleton:$(date +%s)
