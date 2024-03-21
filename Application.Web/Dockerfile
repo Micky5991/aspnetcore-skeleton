@@ -14,6 +14,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - &&\
 COPY ["Application.Web/Application.Web.csproj", "Application.Web/"]
 RUN dotnet restore "Application.Web/Application.Web.csproj"
 COPY . .
+RUN npm install
 WORKDIR "/src/Application.Web"
 RUN dotnet build "Application.Web.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
