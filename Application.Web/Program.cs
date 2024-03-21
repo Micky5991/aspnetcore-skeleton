@@ -63,6 +63,7 @@ else
 
 app.UseHttpsRedirection();
 
+app.UseStatusCodePagesWithReExecute("/errors/{0}");
 app.Redirect("/Account/", "/Account/Login/");
 
 app.UseStaticFiles();
