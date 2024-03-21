@@ -7,6 +7,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
+
+RUN curl -fsSL https://deb.nodesource.com/setup_21.x | bash - &&\
+RUN apt-get install -y nodejs
+
 COPY ["Application.Web/Application.Web.csproj", "Application.Web/"]
 RUN dotnet restore "Application.Web/Application.Web.csproj"
 COPY . .
