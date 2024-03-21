@@ -17,3 +17,6 @@ jobs:
 
     - name: Build the Docker image
       run: docker compose build
+
+    - name: List docker image sizes
+      run: docker image ls
