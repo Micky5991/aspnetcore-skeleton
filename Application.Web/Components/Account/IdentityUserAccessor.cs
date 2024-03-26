@@ -3,9 +3,7 @@ using Application.Web.Data;
 
 namespace Application.Web.Components.Account;
 
-internal sealed class IdentityUserAccessor(
-    UserManager<ApplicationUser> userManager,
-    IdentityRedirectManager redirectManager)
+internal sealed class IdentityUserAccessor(UserManager<ApplicationUser> userManager, IdentityRedirectManager redirectManager)
 {
     public async Task<ApplicationUser> GetRequiredUserAsync(HttpContext context)
     {
